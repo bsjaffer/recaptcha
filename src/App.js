@@ -6,29 +6,24 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props)
-
-    this.handleSubscribe = this.handleSubscribe.bind(this);
-    this.recaptchaLoaded = this.recaptchaLoaded.bind(this);
-    this.verifyCallback = this.verifyCallback.bind(this);
-
     this.state = {
       isVerified: false
     }
   }
 
-  recaptchaLoaded() {
+  recaptchaLoaded =()  =>{
     console.log('capcha successfully loaded');
   }
 
-  handleSubscribe() {
+  handleLogin =() => {
     if (this.state.isVerified) {
-      alert('You have successfully subscribed!');
+      alert('Logged In!!!');
     } else {
-      alert('Please verify that you are a human!');
+      alert('Please verify!');
     }
   }
 
-  verifyCallback(response) {
+  verifyCallback = (response)  =>{
     if (response) {
       this.setState({
         isVerified: true
@@ -42,12 +37,14 @@ class App extends Component {
     
     <div class="container">
         <div className="App-intro">
-          <input type="text" placeholder="email@company.com" />
-
+          <div>
+          <input type="text" placeholder="username" />
+          </div> <div>
+          <input type="password" placeholder="password" />  </div>
           <div
             className="convert"
-            onClick={this.handleSubscribe}
-          >Subscribe</div>
+            onClick={this.handleLogin}
+          >Login</div>
 
           <Recaptcha
             sitekey=""
